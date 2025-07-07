@@ -1,0 +1,274 @@
+body {
+  background: linear-gradient(135deg, #e3e5e7 60%, #f7fafc 100%);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+}
+
+.checkout-container {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.checkout-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(19,23,32,0.10);
+  padding: 36px 28px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  transition: box-shadow 0.22s, transform 0.15s;
+}
+
+.checkout-content:hover,
+.checkout-content:focus-within {
+  box-shadow: 0 8px 32px rgba(19,23,32,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+
+@media (max-width: 600px) {
+  .checkout-content {
+    max-width: 98vw;
+    padding: 18px 6px;
+    border-radius: 10px;
+  }
+  .checkout-container {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 18px;
+  background: rgba(255,255,255,0.85);
+  padding: 20px 1px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(19,23,32,0.06);
+  margin-bottom: 18px;
+}
+
+.form > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+
+.form-row > div {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .form {
+    padding: 12px 4px;
+    border-radius: 8px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+label {
+  font-size: 1rem;
+  color: #1a342c;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 4px;
+  border: 1.5px solid #ced4da;
+  border-radius: 7px;
+  font-size: 1.07rem;
+  background: #f8fafb;
+  transition: border 0.18s, box-shadow 0.18s;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: #34c759;
+  box-shadow: 0 0 0 2px rgba(52,199,89,0.13);
+  outline: none;
+  background: #fff;
+}
+
+input.error, select.error {
+  border-color: #ff3b30;
+  background: #fff6f6;
+}
+
+
+label.required::after {
+  content: " *";
+  color: #ff3b30;
+  font-weight: 700;
+}
+
+
+button.primary, button.secondary {
+  transition: background 0.2s, color 0.2s, box-shadow 0.15s, transform 0.13s;
+}
+
+button.primary {
+  background: linear-gradient(90deg, #1a342c 60%, #2e5e4d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 0;
+  font-size: 1.08rem;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  box-shadow: 0 1.5px 6px rgba(26,52,44,0.10);
+}
+
+button.primary:hover,
+button.primary:focus {
+  background: linear-gradient(90deg, #2e5e4d 55%, #1a342c 100%);
+  box-shadow: 0 3px 12px rgba(26,52,44,0.13);
+  transform: scale(1.015);
+}
+
+button.primary:active {
+  box-shadow: 0 1px 2px rgba(26,52,44,0.13);
+  transform: scale(0.98);
+}
+
+button.secondary {
+  background: transparent;
+  color: #1a342c;
+  border: 1.5px solid #1a342c;
+  border-radius: 8px;
+  padding: 11px 0;
+  font-size: 1rem;
+  margin-top: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button.secondary:hover,
+button.secondary:focus {
+  background: #e3e5e7;
+  color: #2e5e4d;
+  box-shadow: 0 2px 8px rgba(26,52,44,0.07);
+  transform: scale(1.01);
+}
+
+button.secondary:active {
+  background: #dbe4df;
+  color: #1a342c;
+  transform: scale(0.98);
+}
+
+.form-footer {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.form-footer a {
+  color: #1a342c;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.form-footer a:hover {
+  color: #2e5e4d;
+}
+
+.payment-options {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+@media (max-width: 500px) {
+  .payment-options {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.confirmation {
+  text-align: center;
+  padding: 10px;
+}
+
+.success-checkmark {
+  font-size: 2.8rem;
+  color: #34c759;
+  margin-bottom: 12px;
+}
+
+.booking-summary {
+  background: #f7f9fa;
+  border-radius: 13px;
+  margin: 22px 0;
+  padding: 22px;
+  text-align: left;
+  font-size: 1.04rem;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 3px 14px rgba(19,23,32,0.09);
+  transition: box-shadow 0.18s, transform 0.13s;
+}
+
+.booking-summary:hover {
+  box-shadow: 0 8px 32px rgba(19,23,32,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.booking-summary strong {
+  min-width: 80px;
+  display: inline-block;
+  color: #1a342c;
+}
+
+.booking-summary img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: 4px;
+  border: 1.5px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  vertical-align: middle;
+}
+
+.confirmation-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 400px) {
+  .success-checkmark {
+    font-size: 2.1rem;
+  }
+  .booking-summary {
+    font-size: 0.97rem;
+    padding: 12px;
+  }
+}
+::-webkit-input-placeholder { color: #a0a4aa; font-style: italic; }
+::-moz-placeholder { color: #a0a4aa; font-style: italic; }
+:-ms-input-placeholder { color: #a0a4aa; font-style: italic; }
+::placeholder { color: #a0a4aa; font-style: italic; }

@@ -1,0 +1,75 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  width: 100%;
+  max-width: 420px;
+  min-width: 0;
+  gap: 0.5em;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 74px;
+  flex: 1 1 0;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e3e5e7;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 1.12rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.step.active .circle {
+  background: #1a342c;
+  color: #fff;
+}
+
+.step span {
+  font-size: 0.97rem;
+  color: #1a342c;
+  opacity: 0.9;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background: #e3e5e7;
+  margin: 0 6px;
+  border-radius: 2px;
+  min-width: 14px;
+  max-width: 30px;
+  transition: background 0.15s;
+}
+
+@media (max-width: 500px) {
+  .stepper {
+    gap: 0.2em;
+    max-width: 99vw;
+  }
+  .step {
+    min-width: 55px;
+  }
+  .circle {
+    width: 23px;
+    height: 23px;
+    font-size: 0.95rem;
+  }
+  .step span {
+    font-size: 0.85rem;
+  }
+}
