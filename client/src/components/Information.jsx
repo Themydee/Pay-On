@@ -6,7 +6,7 @@ export default function InformationForm({ onSubmit }) {
     firstName: "",
     company: "",
     position: "",
-    workEmail: "",
+    email: "",
     phone: "",
   });
 
@@ -34,7 +34,7 @@ export default function InformationForm({ onSubmit }) {
       </div>
       <div>
         <label>Email</label>
-        <input name="Email" value={form.workEmail} onChange={handleChange} required type="email" />
+        <input name="email" value={form.workEmail} onChange={handleChange} required type="email" />
       </div>
       <div>
         <label>Phone number</label>

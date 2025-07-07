@@ -1,97 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
+import { PaystackButton } from "react-paystack";
 
 export default function PaymentForm({ onSubmit, onBack, infoData }) {
-  const [form, setForm] = useState({
-    method: "card",
-    cardNumber: "",
-    expiry: "",
-    cvc: "",
-    cardName: "",
-    invoice: "",
-    saveInfo: false,
-  });
+  const publicKey = "pk_test_384e00a3f514b18465920ab6aefacff074495b73";
+  const amount = 5000; // Naira, fixed
+  const email = infoData?.email || ""; // get from info form
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm({ ...form, [name]: type === "checkbox" ? checked : value });
+  const handleSuccess = (reference) => {
+    // Only call onSubmit if payment is successful
+    onSubmit({ paymentMethod: "paystack", reference });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Pass all data to parent for backend processing
-    onSubmit(form);
+  // Do nothing onClose; user stays on this step
+  const handleClose = () => {};
+
+  const componentProps = {
+    email,
+    amount: amount * 100,
+    publicKey,
+    text: "Pay now",
+    onSuccess: handleSuccess,
+    onClose: handleClose,
+    currency: "NGN",
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h3>Enter Payment Details</h3>
+    <form className="form" onSubmit={e => e.preventDefault()}>
+      <h3>Pay with Paystack</h3>
       <div>
-        <label>Select method</label>
-        <div className="payment-options">
-          <label>
-            <input
-              type="radio"
-              value="card"
-              name="method"
-              checked={form.method === "card"}
-              onChange={handleChange}
-            />
-            Debit/Credit Card
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="paypal"
-              name="method"
-              checked={form.method === "paypal"}
-              onChange={handleChange}
-            />
-            PayPal
-          </label>
-        </div>
-      </div>
-      {form.method === "card" && (
-        <>
-          <div className="form-row">
-            <div>
-              <label>Card Number</label>
-              <input name="cardNumber" value={form.cardNumber} onChange={handleChange} required />
-            </div>
-            <div>
-              <label>Expiry</label>
-              <input name="expiry" value={form.expiry} onChange={handleChange} required placeholder="MM/YY" />
-            </div>
-            <div>
-              <label>CVC</label>
-              <input name="cvc" value={form.cvc} onChange={handleChange} required />
-            </div>
-          </div>
-          <div>
-            <label>Cardholder's Name</label>
-            <input name="cardName" value={form.cardName} onChange={handleChange} required />
-          </div>
-        </>
-      )}
-      <div>
-        <label>Invoice</label>
-        <select name="invoice" value={form.invoice} onChange={handleChange}>
-          <option value="">Select address</option>
-          <option value="home">Home Address</option>
-          <option value="office">Office Address</option>
-        </select>
+        <label>Amount</label>
+        <input value="₦5000" disabled readOnly style={{ background: "#f8f8f8" }} />
       </div>
       <div>
-        <label>
-          <input
-            type="checkbox"
-            name="saveInfo"
-            checked={form.saveInfo}
-            onChange={handleChange}
-          />
-          Save my payment information for future use
-        </label>
+        <label>Email for receipt</label>
+        <input value={email} disabled readOnly style={{ background: "#f8f8f8" }} />
       </div>
-      <button type="submit" className="primary">Pay now</button>
+      <PaystackButton {...componentProps} className="primary" />
       <button type="button" className="secondary" onClick={onBack}>
         Back
       </button>
