@@ -2,7 +2,7 @@ import React from "react";
 import { PaystackButton } from "react-paystack";
 
 export default function PaymentForm({ onSubmit, onBack, infoData }) {
-  const publicKey = "pk_test_384e00a3f514b18465920ab6aefacff074495b73";
+  const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
   const amount = 5000; // Naira, fixed
   const email = infoData?.email || ""; // get from info form
 
